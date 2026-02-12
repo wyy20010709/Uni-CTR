@@ -1,0 +1,33 @@
+seed: 2026
+device: auto
+num_workers: 0
+
+task:
+  name: tiny_amazon_book_movie
+  domains: [book, movie]
+  source_domain: book
+  target_domain: movie
+
+data:
+  tiny_path: data/tiny/amazon_book_movie
+
+train:
+  epochs: 1
+  max_steps: 50
+  batch_size: 128
+  eval_batch_size: 256
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+
+metrics: [auc, logloss]
+
+model:
+  name: htr_net
+  embed_dim: 16
+  hidden_dim: 64
+  num_experts: 4
+  topk: 8
+  temperature: 0.1
+  alpha: 0.1
+  beta_orth: 0.0
+  loss_type: mse
