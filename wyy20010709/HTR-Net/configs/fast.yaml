@@ -1,0 +1,28 @@
+seed: 2026
+
+task:
+  source_domain: beauty
+  target_domain: gift
+
+model:
+  name: ple
+  embed_dim: 16
+  hidden_dim: 64
+  num_experts: 4
+  topk: 8
+  temperature: 0.1
+  alpha: 0.1
+  beta_orth: 0.0
+  loss_type: mse
+
+train:
+  epochs: 1
+  stage2_epochs: 1
+  max_steps: 100
+  batch_size: 128
+  eval_batch_size: 256
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  lambda_src: 0.2
+  lambda_tgt: 1.0
+  target_ratio: 0.5

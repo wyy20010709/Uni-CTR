@@ -1,0 +1,43 @@
+seed: 2026
+device: auto
+num_workers: 0
+
+task:
+  name: tiny_multisource_schemeA
+  sources: [fashion, musical_instruments, gift_cards]
+  target: all_beauty
+  merge_sources_as_super_domain: true
+  add_source_domain_id_feature: true
+  domains: [super_source, all_beauty]
+  source_domain: super_source
+  target_domain: all_beauty
+
+data:
+  tiny_path: data/tiny/multisource_schemeA
+
+train:
+  epochs: 1
+  max_steps: 50
+  batch_size: 128
+  eval_batch_size: 256
+  lr: 1.0e-3
+  weight_decay: 1.0e-5
+  stage1:
+    epochs: 1
+    max_steps: 20
+  stage2:
+    epochs: 1
+    max_steps: 20
+
+metrics: [auc, logloss]
+
+model:
+  name: htr_net
+  embed_dim: 16
+  hidden_dim: 64
+  num_experts: 4
+  topk: 8
+  temperature: 0.1
+  alpha: 0.1
+  beta_orth: 0.0
+  loss_type: mse

@@ -1,0 +1,10 @@
+outputs/
+__pycache__/
+*.pyc
+
+# generated data artifacts
+data/*/raw/*.json
+data/*/raw/*.jsonl
+data/*/split/*.tsv
+
+data/processed/
